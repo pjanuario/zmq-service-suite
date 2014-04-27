@@ -1,0 +1,37 @@
+{
+  "name": "zmq-service-suite",
+  "version": "0.0.0",
+  "description": "0MQ Service oriented Suite",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pjanuario/zmq-service-suite.git"
+  },
+  "keywords": [
+    "0MQ",
+    "ZeroMQ",
+    "SOA"
+  ],
+  "author": "Pedro Januário",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/pjanuario/zmq-service-suite/issues"
+  },
+  "homepage": "https://github.com/pjanuario/zmq-service-suite",
+  "devDependencies": {
+    "grunt-jasmine-node-coverage": "~0.1.7",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3"
+  },
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "zmq": "~2.6.0",
+    "q": "~1.0.1",
+    "msgpack-js": "~0.3.0",
+    "uuid": "~1.4.1"
+  }
+}
