@@ -58,6 +58,12 @@ module.exports = function(grunt) {
         extensions: 'js',
         specNameMatcher: '_spec'
       }
+    },
+
+    env: {
+      test: {
+        NODE_ENV : 'test'
+      }
     }
   });
 
