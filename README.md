@@ -8,7 +8,7 @@
 
 This project aims to build a set of libraries and components usefulls to build decoupled and reliable service oriented architectures using Zero MQ. The implementation is inspired by Paranoid Pirate Pattern and Majordomo Patterns and also some of the descriptions are transcripted from ZeroMQ guide.
 
-** The protocol goals of are: **
+**The protocol goals of are:**
 
 * Allow requests to be routed to workers on the basis of abstract service names;
 * Allow both peers to detect disconnection of the other peer, through the use of heartbeating;
@@ -16,7 +16,7 @@ This project aims to build a set of libraries and components usefulls to build d
 * Allow the broker to recover from dead or disconnected workers;
 * Allow add/remove more workers when needed.
 
-** The overall solution goals are: **
+**The overall solution goals are:**
 * Allow scale out, adding more nodes and clusters into the architecture would be painless;
 * Minimize single point of failure, adding more than one broker with load balancing;
 
