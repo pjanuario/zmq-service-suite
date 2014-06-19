@@ -5,11 +5,16 @@ module.exports = function(grunt) {
 
     watch: {
       files: '<%= jshint.files %>',
-      tasks: ['default', 'test']
+      tasks: ['default', 'unit']
     },
 
     jshint: {
-      files: ['Gruntfile.js', 'index.js', '**/spec/**/*.js'],
+      files: [
+        'Gruntfile.js',
+        'client/lib/**/*.js', 'client/spec/**/*.js',
+        'core/lib/**/*.js', 'core/spec/**/*.js',
+        'service_directory/lib/**/*.js', 'service_directory/spec/**/*.js'
+      ],
       options: {
         curly: true,
         eqeqeq: true,
@@ -32,6 +37,7 @@ module.exports = function(grunt) {
           beforeEach: false,
           afterEach: false,
           it: false,
+          xit: false,
           setup: false,
           suite: false,
           teardown: false,
@@ -41,6 +47,7 @@ module.exports = function(grunt) {
           spyOn: false,
           require: false,
           __dirname: false,
+          waits: false,
           waitsFor: false,
           runs: false,
           exports: false,
@@ -49,15 +56,25 @@ module.exports = function(grunt) {
       }
     },
 
+    bgShell: {
+      coverage: {
+        cmd: 'node node_modules/istanbul/lib/cli.js cover --dir build/coverage jasmine-node -- spec --forceexit'
+      },
+      codeclimate: {
+        cmd: 'CODECLIMATE_REPO_TOKEN=33713e494c429b445b85aa1ae1036c30fc601b89275a720ce27b78eee330fdf4 codeclimate < ./build/coverage/lcov.info'
+      }
+    },
+
     jasmine_node: {
-      coverage: {},
       options: {
         forceExit: true,
-        match: '.',
-        matchall: false,
         extensions: 'js',
-        specNameMatcher: '_spec'
-      }
+        specNameMatcher: '_spec',
+        growl: true,
+        isVerbose: false
+      },
+      unit: ['core/spec/unit/', 'client/spec/unit/', 'service_directory/spec/unit/'],
+      integration: ['core/spec/integration/', 'client/spec/integration/', 'service_directory/spec/integration/']
     },
 
     env: {
@@ -68,9 +85,14 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', ['jshint']);
-  grunt.registerTask('test', ['env:test', 'jasmine_node']);
+  grunt.registerTask('unit', ['env:test', 'jasmine_node:unit']);
+  grunt.registerTask('integration', ['env:test', 'jasmine_node:integration']);
+  grunt.registerTask('test', ['env:test', 'unit', 'integration']);
+  grunt.registerTask('cover', ['bgShell:coverage', 'bgShell:codeclimate']);
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-jasmine-node-coverage');
+  grunt.loadNpmTasks('grunt-jasmine-node');
+  grunt.loadNpmTasks('grunt-bg-shell');
+  grunt.loadNpmTasks('grunt-env');
 };
