@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "grunt jshint",
-    "test": "grunt test",
-    "posttest": "grunt codeclimate"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
