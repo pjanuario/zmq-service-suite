@@ -52,9 +52,12 @@
     "grunt jshint",
     "grunt test"
   ],
+  "pre-push": [
+    "grunt cover"
+  ],
   "scripts": {
     "pretest": "grunt jshint",
     "test": "grunt test",
-    "posttest": "grunt cover"
+    "posttest": "grunt codeclimate"
   }
 }

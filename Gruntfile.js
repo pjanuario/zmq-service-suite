@@ -88,7 +88,8 @@ module.exports = function(grunt) {
   grunt.registerTask('unit', ['env:test', 'jasmine_node:unit']);
   grunt.registerTask('integration', ['env:test', 'jasmine_node:integration']);
   grunt.registerTask('test', ['unit', 'integration']);
-  grunt.registerTask('cover', ['bgShell:coverage', 'bgShell:codeclimate']);
+  grunt.registerTask('cover', ['bgShell:coverage']);
+  grunt.registerTask('codeclimate', ['bgShell:coverage', 'bgShell:codeclimate']);
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
