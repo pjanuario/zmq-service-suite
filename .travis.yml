@@ -7,6 +7,7 @@ before_install:
 before_script:
   - npm install -g grunt-cli
   - npm install -g codeclimate-test-reporter
+  - npm install -g istanbul
   - npm install -d
 branches:
   only:

@@ -60,6 +60,9 @@ module.exports = function(grunt) {
       coverage: {
         cmd: 'node node_modules/istanbul/lib/cli.js cover --dir build/coverage jasmine-node -- . --forceexit'
       },
+      coverage_travis: {
+        cmd: 'istanbul cover --dir build/coverage jasmine-node -- . -- --forceexit'
+      },
       codeclimate: {
         cmd: 'CODECLIMATE_REPO_TOKEN=33713e494c429b445b85aa1ae1036c30fc601b89275a720ce27b78eee330fdf4 codeclimate < ./build/coverage/lcov.info'
       }
@@ -89,7 +92,7 @@ module.exports = function(grunt) {
   grunt.registerTask('integration', ['env:test', 'jasmine_node:integration']);
   grunt.registerTask('test', ['unit', 'integration']);
   grunt.registerTask('cover', ['bgShell:coverage']);
-  grunt.registerTask('codeclimate', ['bgShell:coverage', 'bgShell:codeclimate']);
+  grunt.registerTask('codeclimate', ['bgShell:coverage_travis', 'bgShell:codeclimate']);
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
