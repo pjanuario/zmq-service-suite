@@ -4,7 +4,9 @@
   "description": "0MQ Service oriented Suite",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "pretest": "grunt jshint",
+    "test": "grunt test",
+    "posttest": "grunt codeclimate"
   },
   "repository": {
     "type": "git",
@@ -29,8 +31,8 @@
     "assert-plus": "^0.1.5",
     "grunt": "~0.4.2",
     "grunt-bg-shell": "~2.3.1",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-env": "~0.4.1",
     "grunt-jasmine-node": "^0.2.1",
     "grunt-jasmine-node-coverage": "~0.1.7",
@@ -40,10 +42,10 @@
   },
   "dependencies": {
     "lodash": "~2.4.1",
-    "zmq": "~2.6.0",
-    "q": "~1.0.1",
     "msgpack-js": "~0.3.0",
-    "uuid": "~1.4.1"
+    "q": "^1.0.1",
+    "uuid": "~1.4.1",
+    "zmq": "^2.6.0"
   },
   "engines": {
     "node": ">=0.10.28"
@@ -54,10 +56,5 @@
   ],
   "pre-push": [
     "grunt cover"
-  ],
-  "scripts": {
-    "pretest": "grunt jshint",
-    "test": "grunt test",
-    "posttest": "grunt codeclimate"
-  }
+  ]
 }
