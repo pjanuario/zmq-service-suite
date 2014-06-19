@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/pjanuario/zmq-service-suite.svg?branch=master)](https://travis-ci.org/pjanuario/zmq-service-suite)
 [![Code Climate](https://codeclimate.com/github/pjanuario/zmq-service-suite.png)](https://codeclimate.com/github/pjanuario/zmq-service-suite)
+[![Coverage](http://img.shields.io/codeclimate/coverage/github/pjanuario/zmq-service-suite.svg)](https://codeclimate.com/github/pjanuario/zmq-service-suite)
+[![Dependency Status](https://gemnasium.com/pjanuario/zmq-service-suite.svg)](https://gemnasium.com/pjanuario/zmq-service-suite)
+![Grunt](https://cdn.gruntjs.com/builtwith.png)
 
 # ZMQ Service Oriented Suite
 
