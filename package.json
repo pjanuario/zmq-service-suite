@@ -47,5 +47,12 @@
   },
   "engines": {
     "node": ">=0.10.28"
-  }
+  },
+  "pre-commit": [
+    "grunt jshint",
+    "grunt test"
+  ],
+  "pre-push": [
+    "grunt cover"
+  ]
 }
