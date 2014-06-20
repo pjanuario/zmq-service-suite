@@ -50,9 +50,9 @@ The protocol message format is the same for all workflows.
 * Frame 2: Message type, the message type can be REQ or REP;
 * Frame 3: Request unique identifier in according to RFC4122 v1 (timestamp-based) UUID;
 * Frame 4: Service address information for routing composed by service identifier and verb to execute;
-* Frame 6: Header, this key value dictionary encoded in message pack. It could be used for other information such as: server response times, tokens;
-* Frame 5: Payload, this where the actual data is going, this is encode in message pack;
-* Frame 6: Status, this is the response status codes.
+* Frame 5: Header, this key value dictionary encoded in message pack. It could be used for other information such as: server response times, tokens;
+* Frame 6: Status, this is the response status codes;
+* Frame 7: Payload, this where the actual data is going, this is encode in message pack.
 
 The current broker, client, workers implementation will use http status codes for responses. The errors information will be on payload with correct status code filled in.
 The service name and verb are not case sensitive.
