@@ -27,33 +27,26 @@
   },
   "homepage": "https://github.com/pjanuario/zmq-service-suite",
   "devDependencies": {
-    "assert-plus": "^0.1.5",
-    "grunt": "~0.4.2",
-    "grunt-bg-shell": "~2.3.1",
+    "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-env": "~0.4.1",
-    "grunt-jasmine-node": "^0.2.1",
-    "grunt-jasmine-node-coverage": "~0.1.7",
-    "istanbul": "^0.2.11",
-    "jasmine-node": "^2.0.0",
+    "grunt-jasmine-node-coverage-validation": "0.0.4",
     "pre-git": "0.0.16"
   },
   "dependencies": {
-    "lodash": "~2.4.1",
+    "lodash": "^2.4.1",
     "msgpack-js": "~0.3.0",
-    "q": "^2.0.2",
     "uuid": "~1.4.1",
-    "zmq": "^2.6.0"
+    "zmq": "^2.7.0"
   },
   "engines": {
     "node": ">=0.10.28"
   },
   "pre-commit": [
-    "grunt jshint",
-    "grunt test"
+    "npm test"
   ],
   "pre-push": [
-    "grunt cover"
+    "npm test"
   ]
 }

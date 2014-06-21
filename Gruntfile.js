@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
     watch: {
       files: '<%= jshint.files %>',
-      tasks: ['default', 'unit']
+      tasks: ['jshint', 'unit']
     },
 
     jshint: {
@@ -56,25 +56,23 @@ module.exports = function(grunt) {
       }
     },
 
-    bgShell: {
-      coverage: {
-        cmd: 'node node_modules/istanbul/lib/cli.js cover --dir build/coverage jasmine-node -- . --forceexit'
-      },
-      coverage_travis: {
-        cmd: 'istanbul cover --dir build/coverage jasmine-node -- . --forceexit'
-      },
-      codeclimate: {
-        cmd: 'CODECLIMATE_REPO_TOKEN=33713e494c429b445b85aa1ae1036c30fc601b89275a720ce27b78eee330fdf4 codeclimate < ./build/coverage/lcov.info'
-      }
-    },
-
     jasmine_node: {
+      coverage: {
+        options : {
+          failTask: true,
+          branches : 100 ,
+          functions: 100,
+          statements: 100,
+          lines: 100
+        }
+      },
       options: {
         forceExit: true,
+        match: '.',
+        matchall: false,
         extensions: 'js',
         specNameMatcher: '_spec',
-        growl: true,
-        isVerbose: false
+        growl: true
       },
       unit: ['core/spec/unit/', 'client/spec/unit/', 'service_directory/spec/unit/'],
       integration: ['core/spec/integration/', 'client/spec/integration/', 'service_directory/spec/integration/']
@@ -87,16 +85,13 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['jshint']);
-  grunt.registerTask('unit', ['env:test', 'jasmine_node:unit']);
-  grunt.registerTask('integration', ['env:test', 'jasmine_node:integration']);
-  grunt.registerTask('test', ['unit', 'integration']);
-  grunt.registerTask('cover', ['bgShell:coverage']);
-  grunt.registerTask('codeclimate', ['bgShell:coverage_travis', 'bgShell:codeclimate']);
-
+  grunt.loadNpmTasks('grunt-jasmine-node-coverage-validation');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-jasmine-node');
-  grunt.loadNpmTasks('grunt-bg-shell');
   grunt.loadNpmTasks('grunt-env');
+
+  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('unit', ['env:test', 'jasmine_node:unit']);
+  grunt.registerTask('integration', ['env:test', 'jasmine_node:integration']);
+  grunt.registerTask('test', ['jshint', 'unit', 'integration']);
 };
