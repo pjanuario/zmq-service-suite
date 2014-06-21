@@ -3,15 +3,18 @@ services:
 node_js:
   - 0.10
 before_install:
-  - "sudo apt-get install libzmq3-dev"
+  - sudo apt-get install libzmq3-dev
 before_script:
   - npm install -g grunt-cli
-  - npm install -g codeclimate-test-reporter
   - npm install -d
 branches:
   only:
     - master
 script:
-  - "npm test"
-  - "node node_modules/istanbul/lib/cli.js cover --dir build/coverage jasmine-node -- ."
-  - "CODECLIMATE_REPO_TOKEN=33713e494c429b445b85aa1ae1036c30fc601b89275a720ce27b78eee330fdf4 codeclimate < ./build/coverage/lcov.info"
+  - npm test
+after_success:
+  - codeclimate < ./coverage/lcov.info
+addons:
+  code_climate:
+    repo_token:
+      secure: ND3OE+yRcgmGMznZlg/ijtkwY8Id+3tZZHCI4wQN2YQndhpnjJp+QIVxUYRYqZAADSREFJsX3SjyDY51B8+aSFOHWA2v0nFjJVeaNgh2n3E//oto4iw+0Qj6d6M0C5BQ6CheRbNY43xjEeili9ON5bMDLvTx+q71zQXfvFW69eo=
