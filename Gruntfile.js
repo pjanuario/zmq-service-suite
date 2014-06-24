@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         'Gruntfile.js',
         'client/lib/**/*.js', 'client/spec/**/*.js',
         'core/lib/**/*.js', 'core/spec/**/*.js',
-        'service_directory/lib/**/*.js', 'service_directory/spec/**/*.js'
+        'broker/lib/**/*.js', 'broker/spec/**/*.js'
       ],
       options: {
         curly: true,
@@ -75,8 +75,8 @@ module.exports = function(grunt) {
         specNameMatcher: '_spec',
         growl: true
       },
-      unit: ['core/spec/unit/', 'client/spec/unit/', 'service_directory/spec/unit/'],
-      integration: ['core/spec/integration/', 'client/spec/integration/', 'service_directory/spec/integration/']
+      unit: ['core/spec/unit/', 'client/spec/unit/', 'broker/spec/unit/'],
+      integration: ['core/spec/integration/', 'client/spec/integration/', 'broker/spec/integration/']
     },
 
     env: {
